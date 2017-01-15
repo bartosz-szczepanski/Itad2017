@@ -17,8 +17,13 @@ namespace Itad2017.Services
         }
         public bool ValidateNewParticipant(Participant newParticipant)
         {
-            var list = _context.Participant.Select(n => n).ToList();
-            throw new NotImplementedException();
+            if (newParticipant.FirstName == null || newParticipant.FirstName == "") { throw new ArgumentException("FirstName invalid"); }
+            if (newParticipant.SecondName == null || newParticipant.SecondName == "") { throw new ArgumentException("SecondName invalid"); }
+            if (newParticipant.Email == null || newParticipant.Email == "") { throw new ArgumentException("Email invalid"); }
+            if (!newParticipant.Email.Contains('@')) { throw new ArgumentException("Email invalid"); }
+            if (!newParticipant.Email.Contains('.')) { throw new ArgumentException("Email invalid"); }
+            if (_context.Participant.Where(n=>n.Email == newParticipant.Email).Count()>0) { throw new ArgumentException("Email exist in database"); }
+            return true;
         }
     }
 }

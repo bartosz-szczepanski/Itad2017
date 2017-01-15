@@ -31,5 +31,26 @@ namespace Itad2017.Data
         public DbSet<Participation> Participation { get; set; }
 
         public DbSet<Detail> Detail { get; set; }
+
+        public bool SaveNewParticipant(Participant newParticipant)
+        {
+            
+            var details = new Detail() {RegisterTime=DateTime.Now,IsConfirmed=false,IsPresent=false, Code=GenerateUniqueCode()};
+            newParticipant.Details = details;
+            Add(newParticipant);
+            return true;
+        }
+
+        private string GenerateUniqueCode()
+        {
+            string kod = "";
+            List<char> znaki = new List<char>() { 'A', 'B', 'C', 'E', 'D', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'W', 'Y', 'Z' };
+            do
+            {                                
+                znaki = znaki.Select(n => n).OrderBy(n => Guid.NewGuid()).ToList();
+                kod = znaki[0].ToString() + znaki[1].ToString() + znaki[2].ToString();
+            } while (Detail.Select(n => n.Code).Where(n => n == kod).Count() > 0);
+            return kod;
+        }
     }
 }

@@ -14,10 +14,7 @@ namespace Itad2017.Controllers
         private readonly IEmailSender _emailSender;
         private readonly IDataObjectValidation _validationService;
 
-        public RegisterController(ApplicationDbContext context
-            , IEmailSender emailSender
-            , IDataObjectValidation validationService
-            )
+        public RegisterController(ApplicationDbContext context, IEmailSender emailSender, IDataObjectValidation validationService)
         {
             _context = context;
             _emailSender = emailSender;
@@ -31,18 +28,23 @@ namespace Itad2017.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index([Bind("Email,FirstName,LastName")] Models.Participant participant)
+        public async Task<IActionResult> Index([Bind("Email,FirstName,SecondName")] Models.Participant participant)
         {
-            //_validationService.ValidateNewParticipant(participant);
-            if (ModelState.IsValid && _context.Participant.Select(n => n).Where(n => n.Email == participant.Email).Count() < 1)
-            {                
-                _context.Add(participant);
-                await _context.SaveChangesAsync();
-                //_emailSender.SendEmailAsync("do kogo", "temat", "wiadomosc");
-                return RedirectToAction("Succes");
+            try
+            {
+                if (_validationService.ValidateNewParticipant(participant))
+                {                
+                    _context.SaveNewParticipant(participant);
+                    await _context.SaveChangesAsync();
+                    //_emailSender.SendEmailAsync("do kogo", "temat", "wiadomosc");
+                    return RedirectToAction("Succes");
+                }
             }
-
-            // cos poszlo nie tak. wracamy na ten sam widok z danymi ktore przyszly ale trzeba jeszcze zadbac o to zeby wyswietlic bleda 
+            catch (ArgumentException exception)
+            {
+                ViewBag.error = exception.Message;
+            }
+            
             return View(participant);
         }
 
