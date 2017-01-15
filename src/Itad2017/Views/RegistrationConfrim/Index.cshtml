@@ -1,14 +1,40 @@
-@model Itad2017.Models.Participant
+@model Itad2017.Models.Detail
 
 @{
     ViewData["Title"] = "Index";
 }
 
+
 <h2>Index</h2>
 
 
-Siemankoo @Model.FirstName @Model.SecondName :D
-
-Wybierz sobie koszuleczke pod spodem :)
-
-tutaj wstawiæ trzeba partial view z dodawaniem detailsow :)
+<form asp-action="Index">
+    <div class="form-horizontal">
+        <h4>Participant</h4>
+        <hr />
+        <div class="form-group">
+            <input type="hidden" asp-for="@Model.ID"/>
+        </div>
+        <div class="form-group">
+            <label asp-for="TshirtSize" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="TshirtSize" class="form-control" />
+                <span asp-validation-for="TshirtSize" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">WorkShops</label>
+            <div class="col-md-10">
+                    @foreach (var item in ViewBag.Workshops)
+                    {
+                        <input type="radio" name="WorkShop"  value="@item.ID"> <span>@item.Name</span>
+                    }
+                </div>
+            </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Potwierdz" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>

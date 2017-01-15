@@ -36,7 +36,9 @@ namespace Itad2017.Data
         {
             
             var details = new Detail() {RegisterTime=DateTime.Now,IsConfirmed=false,IsPresent=false, Code=GenerateUniqueCode()};
-            newParticipant.Details = details;
+            Add(details);
+            SaveChanges();
+            newParticipant.Details = Detail.FirstOrDefault(n=>n.Code == details.Code);
             Add(newParticipant);
             return true;
         }
