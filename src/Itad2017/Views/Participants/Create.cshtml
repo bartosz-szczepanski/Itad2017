@@ -5,43 +5,44 @@
 }
 
 <h2>Create</h2>
-
-<form asp-action="Create">
-    <div class="form-horizontal">
-        <h4>Participant</h4>
-        <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="Email" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="FirstName" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="SecondName" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="SecondName" class="form-control" />
-                <span asp-validation-for="SecondName" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+<div class="row" style="margin-top: 10vh;">
+    <div class="col-md-4 col-md-offset-4">
+        <section>
+            <form asp-controller="Participants" asp-action="Create" method="post" class="form-horizontal">
+                <h4 style="color: aqua;">Dodaj u¿ytkownika</h4>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input asp-for="Email" class="form-control" placeholder="Email"/>
+                        <span asp-validation-for="Email" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input asp-for="FirstName" class="form-control" placeholder="Imiê"/>
+                        <span asp-validation-for="FirstName" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input asp-for="SecondName" class="form-control" placeholder="Nazwisko" />
+                        <span asp-validation-for="SecondName" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input class="form-control" placeholder="Koszulka" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <a asp-area="" asp-controller="Participants" asp-action="Index" class="btn btn-default">wróæ do listy</a>
+                        <input type="submit" value="Dodaj Uczestnika" class="btn btn-default" style="background-color: aqua; color: black;"/>
+                    </div>
+                </div>
+            </form>
+        </section>
     </div>
-</form>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

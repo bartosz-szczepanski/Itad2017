@@ -9,10 +9,15 @@
     <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a>Witaj @UserManager.GetUserName(User) !</a>
+                <a style="color: #bbb; background-color: transparent;">Witaj <strong>@UserManager.GetUserName(User)</strong> !</a>
             </li>
-            <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Wyloguj się</button>
+            <li class="dropdown">
+                <a href="#" style="color: aqua; background-color: transparent;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administracja <span class="caret"></span></a>
+                <ul class="dropdown-menu" style="color: aqua; background-color: rgba(10, 10, 10, 0.65);">
+                    <li><a asp-action="Index" asp-controller="Participants" style="background-color: transparent; color: aqua;">Podgląd uczestników</a></li>
+                    <li><a asp-action="Create" asp-controller="Participants" style="background-color: transparent; color: aqua;">Dodaj uczestnika</a></li>
+                    <li><a asp-action="LogOff" asp-controller="Account" style="background-color: transparent; color: aqua;">Wyloguj się</a></li>
+                </ul>
             </li>
         </ul>
     </form>
@@ -20,6 +25,6 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="" asp-controller="Account" asp-action="Login">Zaloguj się</a></li>
+        <li><a asp-area="" asp-controller="Account" asp-action="Login" style="color: aqua; background-color: transparent;">Administracja</a></li>
     </ul>
 }

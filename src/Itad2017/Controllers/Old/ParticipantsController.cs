@@ -17,7 +17,7 @@ namespace Itad2017.Controllers
 
         public ParticipantsController(ApplicationDbContext context)
         {
-            _context = context;    
+            _context = context;
         }
 
         // GET: Participants
@@ -35,8 +35,9 @@ namespace Itad2017.Controllers
             {
                 return NotFound();
             }
-
+            var detail = await _context.Detail.SingleOrDefaultAsync(m => m.ID == id);
             var participant = await _context.Participant.SingleOrDefaultAsync(m => m.ID == id);
+            participant.Details = detail;
             if (participant == null)
             {
                 return NotFound();
