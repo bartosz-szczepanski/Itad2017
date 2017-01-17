@@ -1,17 +1,9 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-
-
-<center>Tutaj bedzie wszystko ? :D</center>
-
-<div class="cookie-container" style="display: none;">
+﻿<div class="cookie-container" style="display: none;">
     <div class="alert alert-info alert-dismissible col-xs-12 itad-alert text-center" role="alert" style="position: fixed;border-radius:0; opacity: 0.8">
         <button type="button" class="close cookies-accept" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class="row">
             <div class="col-xs-1 col-xs-offset-3">
-                <img src='/Content/images/cookies.png' class="pull-right" />
+                <img src='/images/cookies.png' class="pull-right" />
             </div>
             <div class="col-xs-5">
                 <p>
@@ -19,61 +11,1844 @@
                     Możesz określić warunki przechowywania lub dostępu do plików cookies w Twojej przeglądarce. <a href="" class="cookies-accept"><b>Rozumiem</b></a>
                 </p>
             </div>
-
         </div>
-
-
     </div>
 </div>
-@Html.Partial("_AlertsPartial", Model.Alerts)
-
-@Html.Action("UpperSection")
-
-<!-- REGISTER SECTION -->
-<section id="register-section" class="container">
-    <div class="row srvc-back-color">
-        <section class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0 center" data-stage-id="1">
-            <div class="divider-two"></div>
-            <h2 class="center">
-                REJESTRACJA
-            </h2>
-            <div class="divider-two margin-botom-50"></div>
-            <div class="text-center">
-                <p class="bk-red"><b>REJESTRACJA została zamknięta z dniem 12 listopada 2015r, bilety zostały wyprzedane :)</b></p>
-            </div>
-            <h3><span class="glyphicon glyphicon-gift"></span></h3>
-            <p class="margin-botom-20">
-                <b> SPIESZ SIĘ!</b> Dla pierwszych 300 osób ITADowa koszulka :).
-            </p>
-
-            <div class="row margin-botom-20">
-                <div class="col-xs-6">
-                    <div class="pull-right chooseConferenceType" data-isworkshop="false">
-                        <i class="fa fa-users chooseIcon"></i>
-                        <p class="chooseText">KONFERENCJA</p>
-                    </div>
-                </div>
-                <div class="col-xs-6">
-                    <div class="pull-left chooseConferenceType" data-isworkshop="true">
-                        <i class="fa fa-cogs chooseIcon"></i>
-                        <p class="chooseText">WARSZTATY</p>
-                    </div>
-                </div>
-            </div>
-
-            <p>Rejestracja na warsztaty jest równoznaczna z rejestracją na konferencję.</p>
-        </section>
-
+<section id="home-section" class="container">
+    <div class="row">
         <div class="col-xs-12">
-            <div class="row">
-                <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
-                    @{
-                        <div id="registerGuestPartial">@{ Html.RenderPartial("RegisterGuest", Model.RegisterGuestViewModel); }</div>
-                            <div id="registerWorkshopGuestPartial">@{ Html.RenderPartial("RegisterWorkshopGuest", Model.RegisterWorkshopGuestViewModel); }</div>
-                    }
+            <h1 class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-2">
+                <img src="~/images/ATH_logo.png" class="img-responsive" />
+            </h1>
+            <h1 class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0">
+                <img src="~/images/Wydzial_Logo.png" class="img-responsive" />
+            </h1>
+            <h1 class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3" style="margin-top:50px">
+                <img src="~/images/ResetLogo_BIG.png" class="img-responsive" />
+            </h1>
+            <h1 class="col-xs-8 col-xs-offset-2 col-sm-12 col-sm-offset-0">
+                <img src="~/images/Logo_ITAD.png" class="img-responsive" />
+            </h1>
+            <div class="col-xs-12">
+                <div class="divider"></div>
+                <h2 class="center">
+                    20 LISTOPADA 2015
+                </h2>
+                <h3 class="center">
+                    Akademia Techniczno-Humanistyczna <br />
+                    ul.Willowa 2 <br />
+                    43-309 Bielsko-Biała
+                </h3>
+                <!-- ./Headings -->
+                <div class="divider"></div>
+                <div id="counter"></div>
+                <div id="counter-default" class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="inner">
+                            <div id="day-number" class="timer-number"></div>
+                            <div class="timer-text">DAYS</div>
+                            <div class="progress medium  active">
+                                <div id="day-bar" class="progress-bar bk-blue"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="inner">
+                            <div id="hour-number" class="timer-number"></div>
+                            <div class="timer-text">HOURS</div>
+                            <div class="progress medium  active">
+                                <div id="hour-bar" class="progress-bar bk-green"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="inner">
+                            <div id="minute-number" class="timer-number"></div>
+                            <div class="timer-text">MINUTES</div>
+                            <div class="progress medium  active">
+                                <div id="minute-bar" class="progress-bar bk-pink"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="inner">
+                            <div id="second-number" class="timer-number"></div>
+                            <div class="timer-text">SECOND</div>
+
+                            <div class="progress medium  active">
+                                <div id="second-bar" class="progress-bar bk-red"></div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- END REGISTER SECTION -->
+<div class="container">
+    <!-- ABOUT SECTION -->
+    <section id="about-section">
+        <div class="row">
+            <div class="col-xs-12 abt-back-color">
+                <div class="divider-two"></div>
+                <h2 class="center">
+                    O KONFERENCJI
+                </h2>
+                <div class="divider-two margin-botom-50"></div>
+
+                <div class="col-xs-10 col-xs-offset-1  col-md-8 col-md-offset-2 margin-botom-20">
+                    <h3 class="center">
+                        <strong>VI EDYCJA IT ACADEMIC DAY ORGANIZOWANA PRZEZ RESET ATH!<br /><br /></strong>
+                    </h3>
+                    <p class="center">
+                        Już po raz <b>szósty </b> Koło Informatyczne <b>RESET ATH</b> podjęło się organizacji konferencji naukowej <b>IT Academic Day</b>.
+                        Czym jest potocznie zwany <b>ITAD</b>? To cykl konferencji informatycznych organizowanych na uczelniach w całej Polsce przez grupy .NET i grupy IT.
+                        Od samego początku młodzi inżynierowie z ATH postawili sobie za cel stworzenie <b>wydarzenia wyjątkowego</b>. Wydarzenia opartego na najbardziej aktualnej
+                        wiedzy z  wielu dziedzin IT - nie tylko programowania, ale przede wszystkim najnowszych <b>technologii</b>, ruchu <b>Open Source</b> czy zagadnień - popularnej w dzisiejszych czasach -
+                        <b>informatyki miękkiej</b>. Nasze starania doceniają największe firmy IT mające swoje siedziby na <b>Podbeskidziu</b> i to właśnie dzięki ich wsparciu jesteśmy w stanie
+                        robić to, co naprawdę lubimy i na poziomie, którego nie powstydziłyby się największe konferencje <b>IT</b> w Polsce. Naszym sposobem na sukces jest współpraca i ogromna
+                        chęć do działania, która nie pozwala nam spoczywać na laurach. Dlatego...<br />
+                        W tym roku idziemy krok dalej - <b>podnosimy poprzeczkę</b>! Przyjdź i przekonaj się sam!
+                    </p>
+                </div>
+                <div class="col-sm-8 col-sm-offset-2 margin-botom-50">
+                    <img src="~/images/ITAD infografika.png" class="img-responsive" />
+                </div>
+
+                <div class="col-sm-8 col-sm-offset-2 margin-botom-20">
+                    <h3 class="center">Nasze słowa potwierdza zeszłoroczna edycja, której skala bardzo miło nas zaskoczyła!</h3>
+                </div>
+                <div class="row center" id="fun-numbers">
+                    <div class="col-sm-3">
+                        <img src="~/images/gift_icon.png" />
+                        <h2 class="fun-number" data-number="25000" data-speed="6000">0</h2> <div class="fun-number-desc">zł W NAGRODACH</div>
+                    </div>
+                    <div class="col-sm-3">
+                        <img src="~/images/people_icon.png" />
+                        <h2 class="fun-number" data-number="350" data-speed="4000">0</h2><div class="fun-number-desc">UCZESTNIKÓW</div>
+                    </div>
+                    <div class="col-sm-3">
+                        <img src="~/images/prelegent_icon.png" />
+                        <h2 class="fun-number" data-number="10" data-speed="2000">0</h2><div class="fun-number-desc">PRELEGENTÓW</div>
+                    </div>
+                    <div class="col-sm-3">
+                        <img src="~/images/staff_icon.png" />
+                        <h2 class="fun-number" data-number="15" data-speed="2000">0</h2><div class="fun-number-desc">WOLONTARIUSZY</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--./row-->
+
+    </section>
+
+    <!-- END ABOUT SECTION -->
+    <!-- PRELEGENCI SECTION -->
+    <section id="prelegent-section">
+        <div class="row">
+            <div class="col-xs-12 prl-back-color">
+                <div class="divider-two"></div>
+                <h2 class="center">PRELEGENCI</h2>
+                <div class="divider-two margin-botom-50"></div>
+
+                <h4 class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 center margin-botom-50">
+                    Poznaj naszych prelegentów. To ich będziesz miał okazję posłuchać i poznać na <b>IT Academic Day</b>!
+                </h4>
+
+                <div class="row margin-botom-20" id="adam_smolnik">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Prelegenci/Adam_Smolnik2.png" class="img-responsive " />
+                            </div>
+                        </div>
+                        <h3>ADAM SMOLNIK</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            Currently, Principal Software Engineer at Pitney Bowes. Prior to PB, an application developer, consultant, designer at companies like Kroll Ontrack, IBM and EDS. Co-founder of AWS User Group Poland, Amazon AWS Hero, ,an active speaker at Cloud conferences, instructor at Cloud and Software workshops, Java/JEE trainer at Altkom, Cloud Computing Architect & Trainer at CloudPeak.pl as well as co-organizer of <a href="http://www.cloudyna.org" target="blank">Cloudyna</a> conference.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Prelegenci/Mateusz_Jonderko2.png" class="img-responsive " />
+                            </div>
+                        </div>
+                        <h3>MATEUSZ JONDERKO</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            Programista i pasjonat tworzenia aplikacji webowych.
+                            Lubi poznawać nowe technologie, szczególnie związane ze wzorcem MVC.
+                            Pracuje w EUVIC, gdzie zajmuje się tworzeniem aplikacji w technologii ASP.NET MVC.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center" id="marcin_rzeszowski">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Prelegenci/Marcin_Rzeszowski2.png" class="img-responsive " />
+                            </div>
+                        </div>
+                        <h3>MARCIN RZESZOWSKI</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            Zawodowo zajmuje się tworzeniem i projektowaniem aplikacji na platformie Microsoft Azure z zastosowaniem technologii ASP.NET MVC. Prelegent kilku spotkań koła naukowego Reset, poświęconych wzorcowi MVC. W roku 2013 aktywnie uczestniczył w IT Academic Day jako prelegent, omawiając temat "Godzina z One ASP.NET - dużo czy mało?". Od kilku lat pracownik firmy EUVIC.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="row margin-botom-20">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center" id="jakub_binda">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Prelegenci/Jakub_Binda.png" class="img-responsive " />
+                            </div>
+                        </div>
+                        <h3>JAKUB BINDA</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            Absolwent Akademii Techniczno Humanistycznej w Bielsku-Białej. Obecnie programista Front-End w firmie Da Vinci Studio. Pasjonat nowinek technologicznych oraz zagorzały fan NBA. W wolnym czasie odpoczywa na łonie natury, łowiąc ryby.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Prelegenci/Tomasz_Kosowski.png" class="img-responsive " />
+                            </div>
+                        </div>
+                        <h3>TOMASZ KOSOWSKI</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            Junior .NET Developer związany z JCommerce od ponad roku. Absolwent Politechniki Opolskiej, związany z tamtejszą grupą .NET PO. Na swoim koncie ma pracę z systemami Orchard CMS oraz aplikacjami mobilnymi i uniwersalnymi Windows. Aktualnie rozwija system oparty na ASP.NET MVC dla dużego klienta z branży energetycznej. W pracy najbardziej ceni sobie kod dobrej jakości i profesjonalne podejście do tematu programowania. Prywatnie fan muzyki i amerykańskiej motoryzacji.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center" id="piotr_nieweglowski">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Prelegenci/Piotr_Nieweglowski.png" class="img-responsive " />
+                            </div>
+                        </div>
+                        <h3>PIOTR NIEWĘGŁOWSKI</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            Programista .NET w firmie JCommerce. Absolwent Politechniki Śląskiej. Swoją przygodę z branżą IT zaczynał 5 lat temu biorąc udział w dużym międzynarodowym projekcie. W swojej pracy zajmuje się przede wszystkim aplikacjami webowymi - głównie backendem. Fan rozwiązań, które zapewniają czystość kodu źródłowego, wzorców projektowych i nowych technologii. Swój wolny czas spędza najczęściej grywając w squasha lub gry planszowe.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="row margin-botom-20">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center" id="marcin_balda">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Prelegenci/Marcin_Balda.png" class="img-responsive " />
+                            </div>
+                        </div>
+                        <h3>MARCIN BAŁDA</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            Absolwent Politechniki Śląskiej na kierunkach Matematyka oraz Informatyka. Obecnie współpracuje z gliwicką firmą Future Processing, gdzie na co dzień zajmuje się tworzeniem aplikacji webowych opartych o platformę .NET. Do zainteresowań zawodowych należą (szeroko pojęty) web development, metodyki Agile'owe oraz wdrażanie na wszelki możliwy sposób zasady KISS (Keep It Simple, Stupid) do prowadzonych projektów.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center" id="przemyslaw_galuszka">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Prelegenci/Przemyslaw_Galuszka.png" class="img-responsive " />
+                            </div>
+                        </div>
+                        <h3>PRZEMYSŁAW GAŁUSZKA</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            Związany ze społecznością .NET od 2010 roku. Były Microsoft Student Partner na Uniwersytecie Śląskim i Student Consultant regionu Śląsko-Małopolskiego. Obecnie pracuje w Microsoft Polska w dziale nowych technologii DX. W swojej codziennej pracy współpracuje ze społecznościami programistycznymi, administratorów i specjalistów IT i studentów. Prywatnie jest zapalonym graczem, czasami bloguje, ma bzika na punkcie nowych technologii i pozwala sobie myśleć, że jest programistą.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center" id="bartlomiej_zass">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Prelegenci/Bartlomiej_Zass.png" class="img-responsive " />
+                            </div>
+                        </div>
+                        <h3>BARTŁOMIEJ ZASS</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            Architekt rozwiązań opartych o chmurę Azure, programista .NET (ze szczególnym zamiłowaniem do aplikacji webowych) i pasjonat wszelkich nowinek technologicznych. Zajmuje się współpracą z niezależnymi producentami oprogramowania, szkoleniem, wspieraniem zespołów deweloperskich w zakresie projektowania architektury oraz modernizacji systemów. W chwili obecnej przede wszystkim skupia się na rozwiązaniach cloudowych. Pomagał w projektowaniu architektury rozwiązań oraz tworzeniu aplikacji typu POC zarówno dla startupów, jak i największych w Polsce serwisów internetowych, operatorów telefonii oraz banków. Prelegent polskich i zagranicznych konferencji technicznych. W wolnych chwilach pasjonuje się fotografią, grafiką komputerową, żeglarstwem, montowaniem różnego rodzaju sprzętu audio i wszelkimi technologicznymi gadżetami.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center" id="błażejfaliszek">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Prelegenci/Blazej_Faliszek2.png" class="img-responsive " />
+                            </div>
+                        </div>
+                        <h3>BŁAŻEJ FALISZEK</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            Z zawodu programista w Pythonie, bloger technologiczny z zamiłowania. Twórca największego w Polsce bloga o Raspberry Pi – <a href="http://malinowepi.pl/" target="blank"><b>Malinowe PI</b></a>. <br />Fan nowych technologii oraz miłośnik wszelakich serwisów społecznościowych. Jeden z założycieli stowarzyszenia Hackerspace Silesia.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center" id="łukaszgaweł">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Prelegenci/Lukasz_Gawel2.png" class="img-responsive " />
+                            </div>
+                        </div>
+                        <h3>ŁUKASZ GAWEŁ</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            Doświadczony web developer pracujący w firmie programistycznej Selleo, która tworzy aplikacje webowe i mobilne dla klientów z całego świata. Na codzień związany głównie z technologią Ruby on Rails nigdy nie odmówi wykonania projektu wykorzystującego AngularJS czy EmberJS. Prowadząc warsztaty w trakcie VI edycji konferencji Open Source Days dał się poznać jako osoba, który nawet najbardziej skomplikowane rozwiązania jest w stanie przedstawić w przystępny pełen humoru sposób. W pracy nigdy nie odmawia dobrej kawy oraz pracy dla klientów z USA.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center" id="arturloska">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Artur_Loska2.png" class="img-responsive " />
+                            </div>
+                        </div>
+                        <h3>ARTUR LOSKA</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            Entuzjasta nowych technologii pragnący zanurzyć się w wirtualnej rzeczywistości. Od zawsze pragnący pracować przy tworzeniu gier, aktualnie stawiający pierwsze kroki w tej dziedzinie. <br />
+                            Wieloletni youtuber łączący miłość do klasycznych gier z nowatorską sceną indie.<br />
+                            <a href="https://www.youtube.com/user/laskapiasek" target="blank"><b>Kanał Laska Gaming</b></a>
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
+    <!--END SERVICES SECTION -->
+    <!-- AGENDA SECTION -->
+    <section id="agenda-section">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 org-back-color">
+                <div class="divider-two"></div>
+                <h2 class="center">AGENDA</h2>
+                <div class="divider-two margin-botom-50"></div>
+
+                <div class="row">
+                    <div class="col-xs-6 col-xs-offset-3 text-center">
+                        <i class="fa fa-users chooseIcon"></i>
+                        <p class="chooseText">PANEL GŁÓWNY KONFERENCJI <br /><b>AULA L128</b></p>
+                    </div>
+                    <div class="col-xs-12 agenda-container">
+
+                        <div class="agenda-box collapsed small">
+                            <div class="collapsed-content">
+                                <div>
+                                    <img src="~/images/Agenda/itad-logo-mini.png" class="col-xs-6 col-xs-offset-3 margin-botom-10" />
+                                    <div class="agenda-title t1 col-xs-12">
+                                        Rejestracja<br />uczestników<br />
+                                        <b>07:45 - 08:45</b>
+                                    </div>
+                                    <div class="t4 col-xs-12">zobacz więcej &raquo;</div>
+                                </div>
+                            </div>
+                            <div class="expanded-content row" style="display: none;">
+                                <div class="col-xs-12 col-sm-5">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <p class="t3 agenda-text-padding" style="padding: 30px;">
+                                                Szósta edycja IT Academic Day w Bielsku-Białej to przede wszystkim pakiet nowości, który przygotowało koło RESET.
+                                                Jedną z nich jest tzw. System ITAD, którego pierwszym elementem jest innowacyjny moduł rejestracji w dniu konferencji.
+                                                Polega on na rejestrowaniu uczestników poprzez skanowanie kodów QR dostarczonych drogą mailową. Do Państwa dyspozycji oddajemy dwa tablety służące do skanowania QR kodów oraz chętnych do pomocy wolontariuszy :)
+
+                                                Zapraszamy 20 listopada do skorzystania z systemu oraz odebrania giftpacka!
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-2 ">
+                                    <div class="align-content-agenda first">
+                                        <div>
+                                            <img src="~/images/Agenda/itad-logo-mini.png" class="img-responsive col-xs-8 col-xs-offset-2 col-sm-10 col-sm-offset-1 margin-botom-20" />
+                                            <p class="t0">
+                                                Rejestracja<br />uczestników
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-5 agenda-margin-top-xs">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <p class="t2">
+                                                <b>07:45 - 08:45</b>
+                                            </p>
+                                            <div class="circle" data-value="1">
+                                                <strong></strong>
+                                            </div>
+                                            <p class="col-xs-12">
+                                                <b>minut</b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="agenda-box collapsed small">
+                            <div class="collapsed-content">
+                                <div>
+                                    <img src="~/images/Agenda/itad-logo-mini.png" class="col-xs-6 col-xs-offset-3 margin-botom-10" />
+                                    <div class="agenda-title t1 col-xs-12">
+                                        Oficjalne<br />rozpoczęcie<br />
+                                        <b>08:45 - 09:20</b>
+                                    </div>
+                                    <div class="t4 col-xs-12">zobacz więcej &raquo;</div>
+                                </div>
+                            </div>
+                            <div class="expanded-content row" style="display: none;">
+
+                                <div class="col-sm-5 col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <p class="t3 agenda-text-padding">
+                                                Zapraszamy wszystkich do wzięcia udziału w oficjalnym otwarciu szóstej edycji IT Academic
+
+                                                Day na ATH. Głos zabiorą władze uczelni, opiekunowie oraz członkowie Koła Reset.
+                                                Po oficjalnym rozpoczęciu zapraszamy na warszaty oraz główny panel konferencyjny
+
+                                                odbywający się przez cały dzień w auli L128.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 col-xs-12  margin-bottom-xs-20">
+                                    <div class="align-content-agenda first">
+                                        <div>
+                                            <img src="~/images/Agenda/itad-logo-mini.png" class="img-responsive col-xs-8 col-xs-offset-2 col-sm-10 col-sm-offset-1 margin-botom-20" />
+                                            <p class="t0">
+                                                Oficjalne<br />rozpoczęcie
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <p class="t2">
+                                                <b>08:45 - 09:20</b>
+                                            </p>
+                                            <div class="circle" data-value="0.58">
+                                                <strong></strong>
+                                            </div>
+                                            <p class="col-xs-12">
+                                                <b>minut</b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="agenda-box collapsed small">
+                            <div class="collapsed-content">
+                                <div>
+                                    <img src="~/images/Sponsors/sponsors_euvic.png" class="col-xs-6 col-xs-offset-3 margin-botom-10" />
+                                    <div class="agenda-title t1">
+                                        Prezentacja<br />firmy EUVIC
+                                        <br />
+                                        <b>09:25 - 09:40</b>
+                                    </div>
+                                    <div class="t4 col-xs-12">zobacz więcej &raquo;</div>
+                                </div>
+                            </div>
+                            <div class="expanded-content row" style="display: none;">
+
+                                <div class="col-sm-5 agenda-margin-top-xs col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Sponsors/sponsors_euvic.png" class="col-xs-6 col-xs-offset-3 img-responsive margin-botom-20" />
+                                            <p class="col-xs-12 t3 agenda-text-padding">
+                                                W tym roku firma Euvic znalazła się w gronie diamentowych sponsorów ITAD w Bielsku-Białej. LGBS jest firmą realizującą projekty informatyczne dla biznesu.
+                                                Firma specjalizuje się w technologiach firmy Microsoft, ale jej kompetencje obejmują także środowisko Java i inne platformy programistyczne.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 col-xs-12">
+                                    <div class="align-content-agenda first">
+                                        <div>
+                                            <img src="~/images/Agenda/itad-logo-mini.png" class="img-responsive col-xs-8 col-xs-offset-2 col-sm-10 col-sm-offset-1 margin-botom-20" />
+                                            <p class="t0">
+                                                Prezentacja firmy EUVIC
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <p class="t2">
+                                                <b>9:25 - 09:40</b>
+                                            </p>
+                                            <div class="circle" data-value="0.25">
+                                                <strong></strong>
+                                            </div>
+                                            <p class="col-xs-12">
+                                                <b>minut</b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="agenda-box collapsed small">
+                            <div class="collapsed-content">
+                                <div>
+                                    <img src="~/images/Sponsors/sponsors_versum.png" class="col-xs-6 col-xs-offset-3 margin-botom-10" />
+                                    <div class="agenda-title t1">
+                                        Prezentacja<br />firmy VERSUM<br />
+                                        <b>09:45 - 10:00</b>
+                                    </div>
+                                    <div class="t4 col-xs-12">zobacz więcej &raquo;</div>
+                                </div>
+                            </div>
+                            <div class="expanded-content row" style="display: none;">
+
+                                <div class="col-sm-5 agenda-margin-top-xs col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Sponsors/sponsors_versum.png" class="col-xs-6 col-xs-offset-3 img-responsive margin-botom-20" />
+                                            <p class="col-xs-12 t3 agenda-text-padding">
+                                                Firma Versum to drugi diamentowy sponsor tegorocznej edycji IT Academic Day.
+                                                Firma ta jest producentem nowoczesnego systemu zarządzania, który pozwala zautomatyzować pracę i efektywność salonu.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 col-xs-12">
+                                    <div class="align-content-agenda first">
+                                        <div>
+                                            <img src="~/images/Agenda/itad-logo-mini.png" class="img-responsive col-xs-8 col-xs-offset-2 col-sm-10 col-sm-offset-1 margin-botom-20" />
+                                            <p class="t1">
+                                                Prezentacja<br />firmy VERSUM
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <p class="t2">
+                                                <b>09:45 - 10:00</b>
+                                            </p>
+                                            <div class="circle" data-value="0.25">
+                                                <strong></strong>
+                                            </div>
+                                            <p class="col-xs-12">
+                                                <b>minut</b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="agenda-box collapsed">
+                            <div class="collapsed-content">
+                                <div>
+                                    <img src="~/images/Partners/microsoft-logo2.png" class="col-xs-6 col-xs-offset-3 margin-botom-10" />
+                                    <div class="agenda-title t2 col-xs-12">
+                                        5 sposobów na karierę, czyli jak odnieść sukces<br />
+                                        <b>10:05 - 10:40</b>
+                                    </div>
+                                    <div class="t4 col-xs-12">zobacz więcej &raquo;</div>
+                                </div>
+                            </div>
+                            <div class="expanded-content row" style="display: none;">
+
+                                <p class="t0 text-center agenda-expanded-title col-xs-12">
+                                    5 sposobów na karierę, czyli jak odnieść sukces
+                                </p>
+                                <div class="col-sm-5 agenda-margin-top-xs col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Partners/microsoft-logo2.png" class="col-xs-6 col-xs-offset-3 img-responsive margin-botom-20" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 margin-bottom-xs-20 row-no-padding col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Agenda/itad-logo-mini.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 margin-botom-20" />
+                                            <p class="t2 col-xs-12">
+                                                <b class="hour-time-agenda">10:05 - 10:40</b>
+                                            </p>
+                                            <div class="col-xs-12">
+                                                <div class="circle" data-value="0.58">
+                                                    <strong></strong>
+                                                </div>
+                                            </div>
+                                            <p class="col-xs-12">
+                                                <b>minut</b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 margin-bottom-xs-20 col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Prelegenci/Przemyslaw_Galuszka.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3 margin-botom-20" />
+                                            <a href="#przemyslaw_galuszka" class="slide-inner col-xs-12">
+                                                <p>
+                                                    Prowadzący: <b>Przemysław Gałuszka</b>
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="agenda-box collapsed">
+                            <div class="collapsed-content">
+                                <div>
+                                    <img src="~/images/Sponsors/sponsors_jcommerce.PNG" class="col-xs-6 col-xs-offset-3 margin-botom-10" />
+
+                                    <div class="agenda-title t2">
+                                        Tworzenie aplikacji mobilnych na platformę Windows Phone i Windows<br /><b>10:45 - 11:30</b>
+                                    </div>
+                                    <div class="t4 col-xs-12">zobacz więcej &raquo;</div>
+
+                                </div>
+                            </div>
+                            <div class="expanded-content row" style="display: none;">
+
+                                <p class="t0 text-center agenda-expanded-title col-xs-12">
+                                    Tworzenie aplikacji mobilnych na platformę Windows Phone i Windows
+                                </p>
+                                <div class="col-sm-5 agenda-margin-top-xs col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Sponsors/sponsors_jcommerce.PNG" class="col-xs-6 col-xs-offset-3 img-responsive margin-botom-20" />
+                                            <p class="col-xs-12 t2 agenda-text-padding">
+                                                Od ponad 10 lat firma JCommerce specjalizuje się w dostarczaniu rozwiązań IT w obszarach Java, .NET, PHP, Front-End oraz systemów Business Intelligence i ERP.
+                                                Na VI edycji IT Academic Day firma Jcommerce jest brązowym sponsorem.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 margin-bottom-xs-20 row-no-padding col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Agenda/itad-logo-mini.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 margin-botom-20" />
+                                            <p class="t2 col-xs-12">
+                                                <b class="hour-time-agenda">10:45 - 11:30</b>
+                                            </p>
+                                            <div class="col-xs-12">
+                                                <div class="circle" data-value="0.75">
+                                                    <strong></strong>
+                                                </div>
+                                            </div>
+                                            <p class="col-xs-12">
+                                                <b>minut</b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 margin-bottom-xs-20 col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Prelegenci/Tomasz_Kosowski.png" class="img-responsive col-xs-4 col-xs-offset-2 margin-botom-20" />
+                                            <img src="~/images/Prelegenci/Piotr_Nieweglowski.png" class="img-responsive col-xs-4 margin-botom-20" />
+
+                                            <a href="#piotr_nieweglowski" class="slide-inner col-xs-12 p2">
+                                                <p>
+                                                    Prowadzący: <b>Tomasz Kosowski i Piotr Niewęgłowski</b>
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="agenda-box collapsed small">
+                            <div class="collapsed-content">
+                                <div>
+                                    <img src="~/images/pizza_icon.png" class="col-xs-6 col-xs-offset-3 margin-botom-10" />
+
+                                    <div class="agenda-title t2">
+                                        Przerwa na<br />pizzę!<br /><b>11:30 - 12:00</b>
+                                    </div>
+                                    <div class="t4 col-xs-12">zobacz więcej &raquo;</div>
+
+                                </div>
+                            </div>
+                            <div class="expanded-content row" style="display: none;">
+
+                                <div class="col-sm-5 agenda-margin-top-xs col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <p class="col-xs-12 t3 agenda-text-padding">
+                                                <b>Pizza!</b><br /><br />
+                                                Wszystkich uczestników zapraszamy do holu obok auli L128, w której odbywa się główny panel konferencyjny. W tym roku dla WSZYSTKICH przewidzieliśmy przerwę obiadową w postaci pizzy od firmy MAXIMUS.
+                                                <br /><br />
+                                                Smacznego! :)
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 col-xs-12">
+                                    <div class="align-content-agenda first">
+                                        <div>
+                                            <img src="~/images/pizza_icon.png" class="img-responsive col-xs-10 col-xs-offset-1 margin-botom-20" />
+                                            <p class="t0">
+                                                Przerwa na pizzę!
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <p class="t2">
+                                                <b>11:30 - 12:00</b>
+                                            </p>
+                                            <div class="col-xs-12">
+                                                <div class="circle" data-value="0.5">
+                                                    <strong></strong>
+                                                </div>
+                                            </div>
+                                            <p class="col-xs-12">
+                                                <b>minut</b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="agenda-box collapsed">
+                            <div class="collapsed-content">
+                                <div>
+                                    <img src="~/images/Partners/microsoft-logo2.png" class="col-xs-6 col-xs-offset-3 margin-botom-10" />
+
+                                    <div class="agenda-title t2">
+                                        Innowacje technologiczne, czyli <br />do czego krowom krokomierze?<br />
+                                        <b>12:00 - 12:45</b>
+                                    </div>
+                                    <div class="t4 col-xs-12">zobacz więcej &raquo;</div>
+
+                                </div>
+                            </div>
+                            <div class="expanded-content row" style="display: none;">
+
+
+                                <p class="t0 text-center agenda-expanded-title col-xs-12">
+                                    Innowacje technologiczne, czyli do czego krowom krokomierze?
+                                </p>
+
+                                <div class="col-sm-5 agenda-margin-top-xs col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <p class="t3 agenda-text-padding margin-bottom-xs-20">Technologia oferuje dziś programistom praktycznie nieograniczone możliwości. Chmury obliczeniowe, potrafiące przetwarzać petabajty danych w mgnieniu oka, hologramy, komputery wielkości zegarka. Tysiące czujników, zbierających dane oraz usługi, pozwalające je analizować. Jedynym ograniczeniem jest kreatywność programisty. W trakcie prezentacji spróbuję pobudzić Waszą wyobraźnię – pokażę kilka wybranych rozwiązań, które zademonstrują co można zrealizować przy pomocy kodu i dostępnych technologii - w szczególności Windows 10, Azure, Office. Przyjrzymy się następnie nieco bliżej tym technologiom od strony deweloperskiej, poznamy ich możliwości i zobaczymy jak zastosować je w praktyce.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 margin-bottom-xs-20 row-no-padding col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Agenda/itad-logo-mini.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 margin-botom-20" />
+                                            <p class="t2 col-xs-12">
+                                                <b class="hour-time-agenda">12:00 - 12:45</b>
+                                            </p>
+                                            <div class="col-xs-12">
+                                                <div class="circle" data-value="0.75">
+                                                    <strong></strong>
+                                                </div>
+                                            </div>
+                                            <p class="col-xs-12">
+                                                <b>minut</b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 margin-bottom-xs-20 col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Prelegenci/Bartlomiej_Zass.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3 margin-botom-20" />
+                                            <a href="#bartlomiej_zass" class="slide-inner col-xs-12">
+                                                <p>
+                                                    Prowadzący: <b>Bartłomiej Zass</b>
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="agenda-box collapsed">
+                            <div class="collapsed-content">
+                                <div>
+                                    <img src="~/images/Sponsors/sponsors_euvic.png" class="img-responsive col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 margin-botom-10" />
+                                    <div class="agenda-title t1">
+                                        Przypadki użycia komponentów Azure<br /><b>12:50 - 13:35</b>
+                                    </div>
+                                    <div class="t4 col-xs-12">zobacz więcej &raquo;</div>
+
+                                </div>
+                            </div>
+                            <div class="expanded-content row" style="display: none;">
+
+                                <p class="t0 text-center agenda-expanded-title col-xs-12">
+                                    Przypadki użycia komponentów Azure
+                                </p>
+                                <div class="col-sm-5 agenda-margin-top-xs col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Sponsors/sponsors_euvic.png" class="col-xs-6 col-xs-offset-3 img-responsive margin-botom-20" />
+                                            <p class="col-xs-12 agenda-text-padding">
+                                                W tym roku firma Euvic znalazła się w gronie diamentowych sponsorów ITAD w Bielsku-Białej. LGBS jest firmą realizującą projekty informatyczne dla biznesu.
+                                                Firma specjalizuje się w technologiach firmy Microsoft, ale jej kompetencje obejmują także środowisko Java i inne platformy programistyczne.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 margin-bottom-xs-20 row-no-padding col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Agenda/itad-logo-mini.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 margin-botom-20" />
+                                            <p class="t2 col-xs-12">
+                                                <b class="hour-time-agenda">12:50 - 13:35</b>
+                                            </p>
+                                            <div class="col-xs-12">
+                                                <div class="circle" data-value="0.75">
+                                                    <strong></strong>
+                                                </div>
+                                            </div>
+                                            <p class="col-xs-12">
+                                                <b>minut</b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 margin-bottom-xs-20 col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Prelegenci/Marcin_Rzeszowski2.png" class="img-responsive col-xs-4 col-xs-offset-2 margin-botom-20" />
+                                            <img src="~/images/Prelegenci/Mateusz_Jonderko2.png" class="img-responsive col-xs-4 margin-botom-20" />
+
+                                            <a href="#marcin_rzeszowski" class="slide-inner col-xs-12 p2">
+                                                <p>
+                                                    Prowadzący: <b>Marcin Rzeszowski i Mateusz Jonderko</b>
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="agenda-box collapsed">
+                            <div class="collapsed-content">
+                                <div>
+                                    <img src="~/images/Sponsors/sponsors_pitney.png" class="img-responsive col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 margin-botom-10" />
+
+                                    <div class="agenda-title t3">
+                                        Internet of Things on Amazon AWS Cloud - Revolution in IT world has just come<br /><b>13:40 - 14:40</b>
+                                    </div>
+                                    <div class="t4 col-xs-12">zobacz więcej &raquo;</div>
+                                </div>
+                            </div>
+                            <div class="expanded-content row" style="display: none;">
+
+                                <p class="t0 text-center agenda-expanded-title col-xs-12">
+                                    Internet of Things on Amazon AWS Cloud - Revolution in IT world has just come
+                                </p>
+
+                                <div class="col-sm-5 agenda-margin-top-xs margin-bottom-xs-20 col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Sponsors/sponsors_pitney.PNG" class="col-xs-8 col-xs-offset-2 img-responsive margin-bottom-xs-20" />
+
+                                            <p class="t2 col-xs-12 agenda-text-padding">Firma Pitney Bowes jest światowym liderem na rynku kompleksowych rozwiązań w zakresie przetwarzania korespondencji masowej. Oddział w Bielsku-Białej koncentruje się na rozwoju i testowaniu produktów Pitney Bowes, używając najnowszych technologii.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 margin-bottom-xs-20 row-no-padding col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Agenda/itad-logo-mini.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 margin-botom-20" />
+                                            <p class="t2 col-xs-12">
+                                                <b class="hour-time-agenda">13:40 - 14:40</b>
+                                            </p>
+                                            <div class="col-xs-12">
+                                                <div class="circle" data-value="1">
+                                                    <strong></strong>
+                                                </div>
+                                            </div>
+                                            <p class="col-xs-12">
+                                                <b>minut</b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 margin-bottom-xs-20 col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Prelegenci/Adam_Smolnik2.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3 margin-botom-20" />
+                                            <a href="#adam_smolnik" class="slide-inner col-xs-12">
+                                                <p>
+                                                    Prowadzący: <b>Adam Smolnik</b>
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="agenda-box-not collapsed small">
+                            <div class="collapsed-content">
+                                <div>
+                                    <img src="~/images/Agenda/itad-logo-mini.png" class="col-xs-6 col-xs-offset-3 margin-botom-10" />
+
+                                    <div class="agenda-title t2">
+                                        PRZERWA<br /><b>14:40 - 14:55</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="agenda-box collapsed">
+                            <div class="collapsed-content">
+                                <div>
+                                    <img src="~/images/Sponsors/sponsors_davinci.png" class="col-xs-6 col-xs-offset-3 margin-botom-10" />
+
+                                    <div class="agenda-title t1">
+                                        Chrome Developer Tools - tips&tricks<br /><b>14:55 - 15:30</b>
+                                    </div>
+                                    <div class="t4 col-xs-12">zobacz więcej &raquo;</div>
+                                </div>
+                            </div>
+                            <div class="expanded-content row" style="display: none;">
+
+                                <p class="t0 text-center agenda-expanded-title col-xs-12">
+                                    Chrome Developer Tools - tips&tricks
+                                </p>
+
+                                <div class="col-sm-5 agenda-margin-top-xs margin-bottom-xs-20 col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Sponsors/sponsors_davinci.png" class="col-xs-4 col-xs-offset-4 img-responsive margin-botom-20" />
+
+                                            <p class="t2 col-xs-12 agenda-text-padding">
+                                                Aby stawić czoła zadaniom wyznaczonym przez użytkowników, wciąż rozwijają swoje umiejętności. Jako podstawę architektury używają nowoczesnych środowisk JavaScript: BackBone.js, AngularJS, CSS preprocessor - SASS.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 margin-bottom-xs-20 row-no-padding col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Agenda/itad-logo-mini.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 margin-botom-20" />
+                                            <p class="t2 col-xs-12">
+                                                <b class="hour-time-agenda">14:55 - 15:30</b>
+                                            </p>
+                                            <div class="col-xs-12">
+                                                <div class="circle" data-value="0.58">
+                                                    <strong></strong>
+                                                </div>
+                                            </div>
+                                            <p class="col-xs-12">
+                                                <b>minut</b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 margin-bottom-xs-20 col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Prelegenci/Jakub_Binda.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3 margin-botom-20" />
+                                            <a href="#jakub_binda" class="slide-inner col-xs-12">
+                                                <p>
+                                                    Prowadzący: <b>Jakub Binda</b>
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="agenda-box collapsed">
+                            <div class="collapsed-content">
+                                <div>
+                                    <img src="~/images/Sponsors/sponsors_fp.png" class="col-xs-10 col-xs-offset-1 margin-botom-10" />
+
+                                    <div class="agenda-title t2">
+                                        Jak zbudować Windows Store Apps za pomocą HTML5 i JavaScript<br /><b>15:35 - 16:20</b>
+                                    </div>
+                                    <div class="t4 col-xs-12">zobacz więcej &raquo;</div>
+
+                                </div>
+                            </div>
+                            <div class="expanded-content row" style="display: none;">
+
+                                <p class="t0 text-center agenda-expanded-title col-xs-12">
+                                    Jak zbudować Windows Store Apps za pomocą HTML5 i JavaScript
+                                </p>
+
+                                <div class="col-sm-5 agenda-margin-top-xs col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Sponsors/sponsors_fp.png" class="col-xs-8 col-xs-offset-2 img-responsive" />
+
+                                            <p class="t2 col-xs-12 agenda-text-padding">
+                                                Biblioteka WinJS to idealne rozwiązanie dla każdego web developera, który chciałby rozpocząć swą przygodę z tworzeniem aplikacji przeznaczonych do Windows Store.
+                                                <br />
+                                                Podczas krótkiej prezentacji pokazane zostaną możliwości jakie daje nam biblioteka WinJS na froncie walk z Windows Store Apps. Omówiony zostanie wzorzec programowania asynchronicznego oparty na obiektach Promise oraz zaprezentowane zostaną wybrane kontrolki umożliwiające zarówno tworzenie zaawansowanego UI jak i wykorzystanie elementów systemów rodziny Windows jak np. kamera.
+                                                <br />
+                                                Znając język JavaScript oraz standardy HTML5 i CSS3 można zbudować w pełni funkcjonalne aplikacje na urządzenia mobile oraz desktopy.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 margin-bottom-xs-20 row-no-padding col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Agenda/itad-logo-mini.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 margin-botom-20" />
+                                            <p class="t2 col-xs-12">
+                                                <b class="hour-time-agenda">15:35 - 16:20</b>
+                                            </p>
+                                            <div class="col-xs-12">
+                                                <div class="circle" data-value="0.75">
+                                                    <strong></strong>
+                                                </div>
+                                            </div>
+                                            <p class="col-xs-12">
+                                                <b>minut</b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 margin-bottom-xs-20 col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Prelegenci/Marcin_Balda.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3 margin-botom-20" />
+                                            <a href="#marcin_balda" class="slide-inner col-xs-12">
+                                                <p>
+                                                    Prowadzący: <b>Marcin Bałda</b>
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="agenda-box collapsed">
+                            <div class="collapsed-content">
+                                <div>
+                                    <img src="~/images/Agenda/itad-logo-mini.png" class="col-xs-6 col-xs-offset-3 margin-botom-10" />
+
+                                    <div class="agenda-title t2">
+                                        Oficjalne zakończenie i rozdanie nagród<br /><b>16:25 - 16:50</b>
+                                    </div>
+                                    <div class="t4 col-xs-12">zobacz więcej &raquo;</div>
+
+                                </div>
+                            </div>
+                            <div class="expanded-content row" style="display: none;">
+
+                                <p class="t0 text-center agenda-expanded-title col-xs-12">
+                                    Oficjalne zakończenie i rozdanie nagród
+                                </p>
+
+                                <div class="col-sm-5 agenda-margin-top-xs col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <p class="t2 col-xs-12 agenda-text-padding">
+                                                Oficjalne zakończenie to przede wszystkim losowanie nagród oraz nagrody głównej ufundowanej przez prorektora prof. dr. hab. Kazimierza Nikodema. W tym roku główną nagrodą jest iPhone 6.
+                                            </p>
+                                            <br />
+                                            <p class="t2 col-xs-12 agenda-text-padding" style="margin-top:20px">
+                                                <a href="@Url.Content("~/Content/files/ITAD 2015 regulamin.pdf")" target="blank"><b>Regulamin losowania nagród</b></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 margin-bottom-xs-20 row-no-padding col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Agenda/itad-logo-mini.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 margin-botom-20" />
+                                            <p class="t2 col-xs-12">
+                                                <b class="hour-time-agenda">16:25 - 16:50</b>
+                                            </p>
+                                            <div class="col-xs-12">
+                                                <div class="circle" data-value="0.42">
+                                                    <strong></strong>
+                                                </div>
+                                            </div>
+                                            <p class="col-xs-12">
+                                                <b>minut</b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 margin-bottom-xs-20 col-xs-12">
+                                    <div class="align-content-agenda">
+                                        <div>
+                                            <img src="~/images/Agenda/iphone6.png" class="img-responsive col-xs-6 col-xs-offset-3 margin-botom-20" />
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-xs-offset-3 text-center margin-top-40">
+                    <i class="fa fa-cogs chooseIcon"></i>
+                    <p class="chooseText">
+                        PANEL WARSZTATOWY
+                    </p>
+                </div>
+                <div class="col-xs-12 agenda-container">
+                    <div class="agenda-box collapsed">
+                        <div class="collapsed-content">
+                            <div>
+                                <img src="~/images/Agenda/ruby-logo.png" class="col-xs-6 col-xs-offset-3" />
+
+                                <div class="agenda-title t2">
+                                    Błyskawiczne tworzenie aplikacji w Ruby on Rails<br /><b>09:00 - 11:00<br />12:00 - 14:00</b>
+                                </div>
+                                <div class="t4 col-xs-12">zobacz więcej &raquo;</div>
+
+                            </div>
+                        </div>
+                        <div class="expanded-content row" style="display: none;">
+
+                            <p class="t0 text-center agenda-expanded-title col-xs-12">
+                                Błyskawiczne tworzenie aplikacji w Ruby on Rails
+                            </p>
+
+                            <div class="col-sm-5 agenda-margin-top-xs col-xs-12">
+                                <div class="align-content-agenda">
+                                    <div>
+                                        <img src="~/images/Agenda/ruby-logo.png" class="col-xs-4 col-xs-offset-4 img-responsive" />
+
+                                        <p class="t2 col-xs-12 agenda-text-padding">
+                                            Celem mojego warsztatu jest pokazanie co to jest Ruby on Rails, dlaczego warto nauczyć się w nim kodować i jakie korzyści z tego płyną.
+
+                                            Podczas warsztatu napiszemy wspólnie prostą aplikację od podstaw, każdy uczestnik będzie mógł w praktyce zobaczyć na czym polega tworzenie aplikacji webowych w oparciu o architekturę MVC i dlaczego w Ruby on Rails tworzy się je tak szybko.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 margin-bottom-xs-20 row-no-padding col-xs-12 agenda-margin-top-xs">
+                                <div class="align-content-agenda">
+                                    <div>
+                                        <img src="~/images/Agenda/itad-logo-mini.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 margin-botom-20" />
+                                        <p class="t2 col-xs-12">
+                                            <b class="hour-time-agenda">
+                                                09:00 - 11:00<br />
+                                                12:00 - 14:00
+                                            </b>
+                                        </p>
+                                        <div class="col-xs-12">
+                                            <div class="circle" data-value="2">
+                                                <strong></strong>
+                                            </div>
+                                        </div>
+                                        <p class="col-xs-12">
+                                            <b>minut</b>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 margin-bottom-xs-20 col-xs-12">
+                                <div class="align-content-agenda">
+                                    <div>
+                                        <img src="~/images/Prelegenci/Lukasz_Gawel2.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3 margin-botom-20" />
+                                        <a href="#łukaszgaweł" class="slide-inner col-xs-12">
+                                            <p>
+                                                Prowadzący: <b>Łukasz Gaweł</b>
+                                            </p>
+                                        </a>
+                                        <p class="col-xs-12"><b>Budynek A, sala 104 (I piętro)</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="agenda-box collapsed">
+                        <div class="collapsed-content">
+                            <div>
+                                <img src="~/images/Agenda/rpi-logo.png" class="col-xs-4 col-xs-offset-4 margin-botom-10" />
+
+                                <div class="agenda-title t2">
+                                    Mikrokomputer Raspberry Pi<br /><b>09:00 - 11:00<br />12:00 - 14:00</b>
+                                </div>
+                                <div class="t4 col-xs-12">zobacz więcej &raquo;</div>
+
+                            </div>
+                        </div>
+                        <div class="expanded-content row" style="display: none;">
+
+                            <p class="t0 text-center agenda-expanded-title col-xs-12">
+                                Mikrokomputer Raspberry Pi
+                            </p>
+
+                            <div class="col-sm-5 agenda-margin-top-xs col-xs-12">
+                                <div class="align-content-agenda">
+                                    <div>
+                                        <img src="~/images/Agenda/rpi-logo.png" class="col-xs-4 col-xs-offset-4 col-sm-3 col-sm-offset-5 img-responsive margin-botom-20" />
+                                        <p class="t2 col-xs-12 agenda-text-padding">
+                                            Warsztaty z Raspberry Pi przybliżą jeden z najpopularniejszych mikrokoputerów osobom, które nie miały z nim jeszcze do czynienia oraz pozwolą na podszlifowanie wiedzy oraz umiejętności tym wszystkim, którzy już kiedyś realizowali projekty oparte o ten mikrokomputer. W czasie warsztatów postaramy się wprowadzić początkujące osoby w świat elektroniki oraz pokazać kilka ciekawych zastosowań dla Raspberry Pi.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 margin-bottom-xs-20 row-no-padding agenda-margin-top-xs col-xs-12">
+                                <div class="align-content-agenda">
+                                    <div>
+                                        <img src="~/images/Agenda/itad-logo-mini.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 margin-botom-20" />
+                                        <p class="t2 col-xs-12">
+                                            <b class="hour-time-agenda">
+                                                09:00 - 11:00<br />
+                                                12:00 - 14:00
+                                            </b>
+                                        </p>
+                                        <div class="col-xs-12">
+                                            <div class="circle" data-value="2">
+                                                <strong></strong>
+                                            </div>
+                                        </div>
+                                        <p class="col-xs-12">
+                                            <b>minut</b>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 margin-bottom-xs-20 col-xs-12">
+                                <div class="align-content-agenda">
+                                    <div>
+                                        <img src="~/images/Prelegenci/Blazej_Faliszek2.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3 margin-botom-20" />
+                                        <a href="#błażejfaliszek" class="slide-inner col-xs-12">
+                                            <p>
+                                                Prowadzący: <b>Błażej Faliszek</b>
+                                            </p>
+                                        </a>
+                                        <p class="col-xs-12"><b>Budynek L, sala 406 (IV piętro)</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="agenda-box collapsed">
+                        <div class="collapsed-content">
+                            <div>
+                                <img src="~/images/Agenda/unity-logo.png" class="col-xs-4 col-xs-offset-4 margin-botom-10" />
+
+                                <div class="agenda-title t2 col-xs-12">
+                                    Poznaj Unity3D - wprowadzenie do tworzenia gier<br /><b>09:00 - 11:00<br />12:00 - 14:00</b>
+                                </div>
+                                <div class="t4 col-xs-12">zobacz więcej &raquo;</div>
+                            </div>
+                        </div>
+                        <div class="expanded-content row" style="display: none;">
+                            <p class="t0 text-center agenda-expanded-title col-xs-12">
+                                Poznaj Unity3D - wprowadzenie do tworzenia gier
+                            </p>
+                            <div class="col-sm-5 agenda-margin-top-xs margin-bottom-xs-20 col-xs-12">
+                                <div class="align-content-agenda">
+                                    <div>
+                                        <img src="~/images/Agenda/unity-logo.png" class="col-xs-4 col-xs-offset-4 col-sm-3 col-sm-offset-5 img-responsive margin-botom-20" />
+                                        <p class="t2 col-xs-12 agenda-text-padding">
+                                            Chciałeś zawsze stworzyć grę swoich marzeń lecz nie wiedziałeś jak się do tego zabrać? Na tym warsztacie dowiesz się podstaw popularnego silnika Unity3D i stworzysz swoją pierwszą produkcję praktycznie bez użycia kodu. Nie martw się jeśli nigdy nie miałeś do czynienia z tym narzędziem - na zajęciach omówimy podstawy by każdy mógł zacząć przygodę z tworzenie gier.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-2 margin-bottom-xs-20 row-no-padding">
+                                <div class="align-content-agenda">
+                                    <div>
+                                        <img src="~/images/Agenda/itad-logo-mini.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 margin-botom-20" />
+                                        <p class="t2 col-xs-12">
+                                            <b class="hour-time-agenda">
+                                                09:00 - 11:00<br />
+                                                12:00 - 14:00
+                                            </b>
+                                        </p>
+                                        <div class="col-xs-12">
+                                            <div class="circle" data-value="2">
+                                                <strong></strong>
+                                            </div>
+                                        </div>
+                                        <p class="col-xs-12">
+                                            <b>minut</b>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-5 margin-bottom-xs-20">
+                                <div class="align-content-agenda">
+                                    <div>
+                                        <img src="~/images/Staff/Artur_Loska2.png" class="img-responsive col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3 margin-botom-20" />
+                                        <a href="#arturloska" class="slide-inner">
+                                            <p>
+                                                Prowadzący: <b>Artur Loska</b>
+                                            </p>
+                                        </a>
+                                        <p class="col-xs-12"><b>Budynek L, ACI (sala ogólnodostępna - IV piętro)</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--./row-->
+    </section>
+
+    <!-- END AGENDA SECTION -->
+    <!-- WHAT'S NEW SECTION -->
+    <section id="new-section">
+        <div class="row new-back-color">
+            <div class="col-md-12 col-md-offset-0 col-xs-10 col-xs-offset-1">
+                <div class="divider-two"></div>
+                <h2 class="center">CO NOWEGO PRZYGOTOWALIŚMY?</h2>
+                <div class="divider-two margin-botom-50"></div>
+                <!-- ./Headings -->
+                <div class="col-sm-6 center">
+
+                    <img src="~/images/register.png" />
+
+                    <h4 class="center">INNOWACYJNY, AUTORSKI MODUŁ REJESTRACJI</h4>
+                    <p class="center">
+                        Autorski projekt Koła Naukowego <b>RESET</b>, pozwoli na
+                        przyspieszenie procesu rejestrowania uczestników
+                        w dniu konferencji. Uczestnik posiadający QR kod może
+                        samodzielnie zameldować swoją obecność na ITAD i odebrać
+                        swój giftpack od miłego wolontariusza :)
+                    </p>
+                </div>
+                <div class="col-sm-6 center">
+
+                    <img src="~/images/web.png" />
+
+                    <h4 class="center">
+                        NOWA ODSŁONA STRONY IT ACADEMIC DAY
+                    </h4>
+                    <p class="center">
+                        Strona internetowa konferencji to kolejne dzieło <b>RESET</b>owców.
+                        Tegoroczna strona ITAD 2015 jest samodzielna,
+                        w jednym miejscu możesz zarejestrować się
+                        na konferencję lub warsztaty i dowiedzieć się wszystkiego
+                        czego potrzebujesz o konferencji.
+                    </p>
+                </div>
+
+
+                <div class="row">
+
+
+                    <div class="col-sm-6 center">
+
+                        <img src="~/images/workshop.png" />
+
+                        <h4 class="center">WARSZTATY DLA UCZNIÓW SZKÓŁ ŚREDNICH</h4>
+                        <p class="center">
+                            Pierwszy raz w historii bielskiej konferencji IT Academic Day
+                            <b>RESET</b> zdecydował się na organizację warsztatów
+                            dla uczniów szkół średnich. Warsztaty mają na celu zachęcenie młodych ludzi
+                            do kształcenia się w kierunkach technicznych - w szczególności w IT.
+                            Im wcześniej, tym lepiej!
+                        </p>
+                    </div>
+                    <div class="col-sm-6 center">
+
+                        <img src="~/images/packet.png" />
+
+                        <h4 class="center">
+                            PAKIETY SPONSORSKIE
+                        </h4>
+                        <p class="center">
+                            ITAD 2015 to również nowości dla osób chcących wesprzeć
+                            naszą bielską konferencję. Chcemy aby proces ten był jak najbardziej przejrzysty
+                            i klarowny, dlatego zdecydowaliśmy się na wprowadzenie pakietów sponsorskich,
+                            które jasno określają benefity płynące z bycia sponsorem.
+                            O tym, że warto wspierać <b>RESET</b> przekonalo się już liczne grono!
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-sm-offset-3 center">
+                    <img src="~/images/pizza_icon.png" />
+
+                    <h4 class="center">
+                        PIZZA DLA WSZYSTKICH UCZESTNIKÓW!
+                    </h4>
+                    <p class="center">
+                        Zmieniamy się dla WAS i chcemy, żeby <b>IT Academic Day</b> na ATH był dla Ciebie miło spędzonym czasem z fajnymi ludźmi.<br />
+                        <b>Przyjdź i zjedz z Nami przepyszną PIZZĘ :)</b>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!--./row-->
+    </section>
+
+    <!-- END WHAT'S NEW SECTION -->
+    <!-- SPONSORS SECTION -->
+    <section id="sponsor-section">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 spn-back-color">
+                <div class="divider-two"></div>
+                <h2 class="center">SPONSORZY</h2>
+                <div class="divider-two margin-botom-50"></div>
+                <!-- ./Headings -->
+                <p class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 center headerText">
+                    ZAPOZNAJ SIĘ Z OFERTĄ SPONSORSKĄ I SKONTAKTUJ SIĘ Z NAMI<br />
+                    reset@ath.bielsko.pl
+                </p>
+                <a href="@Url.Content("~/Content/files/oferta-sponsorska.pdf")" target="_blank" class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 center headerTextSmall">
+                    <img src="~/images/Sponsors/oferta_image.png" class="img-responsive img-auto-margin margin-botom-50" />
+                </a>
+                <div class="row margin-botom-20">
+                    <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                        <h3 class="text-center">SPONSORZY DIAMENTOWI</h3>
+                        <img src="~/images/Sponsors/sponsors_diamond.png" class="img-responsive img-auto-margin" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-2">
+                        <a href="http://euvic.pl/" target="blank">
+                            <img src="~/images/Sponsors/sponsors_euvic.png" class="img-responsive img-auto-margin" />
+                        </a>
+                    </div>
+                    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-0">
+                        <a href="https://www.versum.pl/" target="blank">
+                            <img src="~/images/Sponsors/sponsors_versum.png" class="img-responsive img-auto-margin" />
+                        </a>
+                    </div>
+                </div>
+                <div class="row margin-top-40 margin-botom-20">
+                    <div class="col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                        <h3 class="text-center">SPONSORZY ZŁOCI</h3>
+                        <img src="~/images/Sponsors/sponsors_gold.png" class="img-responsive img-auto-margin" />
+                    </div>
+                </div>
+                <div class="row flex-align-center margin-botom-20">
+                    <div class="col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-1 col-md-2 col-md-offset-3 margin-botom-20">
+                        <a href="http://next.biz.pl/" target="blank">
+                            <img src="~/images/Sponsors/sponsors_next.png" class="img-responsive img-auto-margin" />
+                        </a>
+                    </div>
+                    <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-1 col-md-4 margin-botom-20">
+                        <a href="http://www.pitneybowes.com/" target="blank">
+                            <img src="~/images/Sponsors/sponsors_pitney.png" class="img-responsive img-auto-margin" />
+                        </a>
+                    </div>
+                </div>
+                <div class="row flex-align-center">
+                    <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-4 col-md-offset-2 margin-botom-20">
+                        <a href="http://4experience.co/" target="blank">
+                            <img src="~/images/Sponsors/sponsors_4experience.png" class="img-responsive img-auto-margin" />
+                        </a>
+                    </div>
+                    <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-md-4 margin-botom-20">
+                        <a href="http://selleo.com/" target="blank">
+                            <img src="~/images/Sponsors/sponsors_selleo.png" class="img-responsive img-auto-margin" />
+                        </a>
+                    </div>
+                </div>
+                <div class="row margin-top-40 margin-botom-20">
+                    <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                        <h3 class="text-center">SPONSORZY BRĄZOWI</h3>
+                        <img src="~/images/Sponsors/sponsors_brown.png" class="img-responsive img-auto-margin" />
+                    </div>
+                </div>
+                <div class="row flex-align-center margin-botom-20">
+                    <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0 col-md-3 col-md-offset-2">
+                        <a href="https://www.future-processing.pl/" target="blank">
+                            <img src="~/images/Sponsors/sponsors_fp.png" class="img-responsive img-auto-margin" />
+                        </a>
+                    </div>
+                    <div class="col-xs-4 col-xs-offset-4 col-sm-offset-0 col-sm-4 col-md-2">
+                        <a href="http://www.davinci-studio.com/" target="blank">
+                            <img src="~/images/Sponsors/sponsors_davinci.png" class="img-responsive img-auto-margin" />
+                        </a>
+                    </div>
+                    <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0 col-md-3 col-md-offset-0">
+                        <a href="http://www.com4it.com/" target="blank">
+                            <img src="~/images/Sponsors/sponsors_com4it.png" class="img-responsive img-auto-margin" />
+                        </a>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-xs-12 col-xs-offset-0 col-md-10 col-md-offset-1">
+                        <div class="row flex-align-center">
+                            <div class="col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-4 col-md-4 margin-bottom-35">
+                                <a href="http://www.jcommerce.pl/" target="blank">
+                                    <img src="~/images/Sponsors/sponsors_jcommerce.PNG" class="img-responsive img-auto-margin" />
+                                </a>
+                            </div>
+                            <div class="col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-4 col-md-4 margin-bottom-35">
+                                <a href="https://inewi.pl/" target="blank">
+                                    <img src="~/images/Sponsors/sponsors_inewi2.png" class="img-responsive img-auto-margin" />
+                                </a>
+                            </div>
+                            <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0 col-md-4 margin-bottom-35">
+                                <a href="http://www.rekord.com.pl/" target="blank">
+                                    <img src="~/images/Sponsors/sponsors_rekord.png" class="img-responsive img-auto-margin" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-xs-offset-0 col-md-10 col-md-offset-1">
+                        <div class="row flex-align-center">
+                            <div class="col-xs-8 col-xs-offset-2 col-sm-offset-4 col-sm-4 col-md-4 margin-bottom-35">
+                                <a href="http://programistamag.pl/" target="blank">
+                                    <img src="~/images/Sponsors/sponsors_programista.png" class="img-responsive img-auto-margin" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--./row-->
+    </section>
+    <!-- END SPONSORS SECTION -->
+    <!-- PARTNERS SECTION -->
+    <section id="partners-section">
+        <div class="row srvc-back-color">
+            <div class="col-md-12 col-xs-10 col-xs-offset-1 col-md-offset-0">
+                <div class="divider-two"></div>
+                <h2 class="center">PARTNERZY</h2>
+                <div class="divider-two margin-botom-50"></div>
+                <div class="row flex-align-center">
+                    <div class="col-xs-8 col-xs-offset-2 col-sm-offset-3 col-sm-6">
+                        <a href="https://www.microsoft.com/pl-pl/" target="blank">
+                            <img src="~/images/Partners/microsoft-logo2.png" class="img-responsive img-auto-margin margin-bottom-35" />
+                        </a>
+                    </div>
+                </div>
+                <div class="row flex-align-center">
+                    <div class="col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-4">
+                        <a href="https://hs-silesia.pl/" target="blank">
+                            <img src="~/images/Partners/hackerspace-logo2.png" class="img-responsive img-auto-margin margin-bottom-35" />
+                        </a>
+                    </div>
+                    <div class="col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-4">
+                        <a href="http://www.ath.bielsko.pl/" target="blank">
+                            <img src="~/images/ATH_logo.png" class="img-responsive img-auto-margin margin-bottom-35" />
+                        </a>
+                    </div>
+                    <div class="col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-4">
+                        <a href="http://www.wbmii.ath.bielsko.pl/" target="blank">
+                            <img src="~/images/Wydzial_Logo.png" class="img-responsive img-auto-margin margin-bottom-35" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END PARTNERS SECTION -->
+    <!-- STAFF SECTION -->
+    <section id="staff-section">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 org-back-color">
+                <div class="divider-two"></div>
+                <h2 class="center">ORGANIZATORZY</h2>
+                <div class="divider-two margin-botom-50"></div>
+                <!-- ./Headings -->
+                <h4 class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 center">
+                    To dzięki nim, co roku mamy okazję spotkać się na <b>IT Academic Day</b> na ATH. Dziękujemy! :)
+                </h4>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Szymon_Tengler2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>SZYMON TENGLER</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            <b>ZAŁOŻYCIEL</b> KOŁA RESET I OPIEKUN SEKCJI <b>.NET</b><br />
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Tomasz_Gancarczyk2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+
+                        <h3>TOMASZ GANCARCZYK</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            OPIEKUN SEKCJI <b>SYSTEMY OPERACYJNE</b> KOŁA RESET ATH
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Pawel_Falat2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+
+                        <h3>PAWEŁ FAŁAT</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            OPIEKUN SEKCJI <b>APLIKACJE MOBILNE</b> KOŁA RESET ATH
+
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Kasia_Jasiewicz2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>KATARZYNA JASIEWICZ</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            PRZEWODNICZĄCA KOŁA <b>RESET ATH</b>
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Marcin_Wadon2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>MARCIN WADOŃ</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            <b>MICROSOFT</b> STUDENT PARTNER
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Tomasz_Kaminski2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>TOMASZ KAMIŃSKI</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENT IV ROKU <b>INFORMATYKI</b>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Bartek_Borak2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>BARTEK BORAK</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENT II ROKU <b>INFORMATYKI</b>
+
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Bartek_Szczepanski2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>BARTOSZ SZCZEPAŃSKI</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENT II ROKU <b>INFORMATYKI</b>
+
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Beata_Goluch2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>BEATA GOŁUCH</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENTKA IV ROKU <b>INFORMATYKI</b>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Jan_Frindt2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>JAN FRINDT</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENT III ROKU <b>INFORMATYKI</b>
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Janusz_Zukowicz2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>JANUSZ ŻUKOWICZ</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENT III ROKU <b>INFORMATYKI</b>
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Pawel_Leja2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>PAWEŁ LEJA</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENT I ROKU <b>INFORMATYKI</b>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Damian_Kowalczyk2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>DAMIAN KOWALCZYK</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENT II ROKU <b>INFORMATYKI</b>
+
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Grzegorz_Zareba2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>GRZEGORZ ZARĘBA</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENT III ROKU <b>INFORMATYKI</b>
+
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Hanna_Pereverzieva2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>HANNA PEREVERZIEVA</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENTKA III ROKU <b>INFORMATYKI</b>
+
+                        </p>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Malgorzata_Mazurek2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>MAŁGORZATA MAZUREK</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENTKA III ROKU <b>INFORMATYKI</b>
+
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Artur_Loska2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>ARTUR LOSKA</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENT IV ROKU <b>INFORMATYKI</b>
+
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Andrzej_Kastelik2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>ANDRZEJ KASTELIK</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENT IV ROKU <b>INFORMATYKI</b>
+
+                        </p>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Marek_Bubiak2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>MAREK BUBIAK</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENT I ROKU <b>INFORMATYKI</b>
+
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Ania_Galuszka2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>ANIA GAŁUSZKA</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENTKA I ROKU <b>INFORMATYKI</b>
+
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Dawid_Holisz2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>DAWID HOLISZ</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENT I ROKU <b>INFORMATYKI</b>
+
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <div class="row">
+                            <div class="col-xxs-6 col-xxs-offset-3 col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                <img src="~/images/Staff/Pawel_Adamus2.png" class="img-responsive img-auto-margin" />
+                            </div>
+                        </div>
+                        <h3>PAWEŁ ADAMUS</h3>
+                        <p class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
+                            STUDENT I ROKU <b>INFORMATYKI</b>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--./row-->
+    </section>
+    <!-- END STAFF SECTION -->
+</div>
