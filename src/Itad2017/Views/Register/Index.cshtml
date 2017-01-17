@@ -1,15 +1,15 @@
-@model Itad2017.Models.Participant
+ï»¿@model Itad2017.Models.Participant
 <style>
     body {
         background: url(http://i63.tinypic.com/25alqow.jpg);
     }
 </style>
-<div class="row" style="margin-top: 25vh;">
+<div class="row abt-back-color" style="margin-top: 10vh;">
     <div class="col-md-4 col-md-offset-4">
         <section>
             <form asp-action="Index">
                 <div class="form-horizontal">
-                    <h4 style="color: aqua;">Rejestracja na konferencjê</h4>
+                    <h4 style="color: white;">Rejestracja na konferencjÄ™</h4>
                     @if (ViewBag.error != "")
                     {
                         <p style="color: #ccc;">
@@ -18,26 +18,26 @@
                     }
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input asp-for="Email" class="form-control" type="text" placeholder="Email"/>
+                            <input asp-for="Email" class="form-control" type="text" placeholder="Email" />
                             <span asp-validation-for="Email" class="text-danger" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input asp-for="FirstName" class="form-control" type="text" placeholder="Imiê"/>
+                            <input asp-for="FirstName" class="form-control" type="text" placeholder="ImiÄ™" />
                             <span asp-validation-for="FirstName" class="text-danger" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input asp-for="SecondName" class="form-control" type="text" placeholder="Nazwisko"/>
-                            <span asp-validation-for="SecondName" class="text-danger"/>
+                            <input asp-for="SecondName" class="form-control" type="text" placeholder="Nazwisko" />
+                            <span asp-validation-for="SecondName" class="text-danger" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-default">wróæ</a>
-                            <input type="submit" value="Zarejestruj" class="btn btn-primary" style="background-color: aqua; color: black;" />
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-link" style="color: aqua;">wrÃ³Ä‡</a>
+                            <input type="submit" value="Zarejestruj" class="btn btn-default"/>
                         </div>
                     </div>
                 </div>

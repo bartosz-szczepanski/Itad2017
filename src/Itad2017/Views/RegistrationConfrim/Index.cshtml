@@ -1,4 +1,4 @@
-@model Itad2017.Models.Detail
+﻿@model Itad2017.Models.Detail
 
 @{
     ViewData["Title"] = "Index";
@@ -9,36 +9,46 @@
     }
 </style>
 
-<h2>Index</h2>
-
-
-<form asp-action="Index">
-    <div class="form-horizontal">
-        <h4>Participant</h4>
-        <hr />
-        <div class="form-group">
-            <input type="hidden" asp-for="@Model.ID"/>
-        </div>
-        <div class="form-group">
-            <label asp-for="TshirtSize" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="TshirtSize" class="form-control" />
-                <span asp-validation-for="TshirtSize" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label">WorkShops</label>
-            <div class="col-md-10">
-                    @foreach (var item in ViewBag.Workshops)
-                    {
-                        <input type="radio" name="WorkShop"  value="@item.ID"> <span>@item.Name</span>
-                    }
+<div class="row abt-back-color" style="margin-top: 10vh;">
+    <div class="col-md-6 col-md-offset-3">
+        <form asp-action="Index">
+            <div class="form-horizontal">
+                <h4>Dziękujemy za potwierdzenie zapisania</h4>
+                <h5>Wybierz poniżej jaki rozmiar koszulki chcesz otrzymać i na jaki warsztat chcesz się zapisać.</h5>
+                <div class="form-group">
+                    <input type="hidden" asp-for="@Model.ID" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="TshirtSize" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <select asp-for="TshirtSize" class="form-control">
+                            <option value="male, S">Męska - S</option>
+                            <option value="male, M">Męska - M</option>
+                            <option value="male, L">Męska - L</option>
+                            <option value="female, S">Damska - S</option>
+                            <option value="female, M">Damska - M</option>
+                            <option value="female, L">Damska - L</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">WorkShops</label>
+                    <div class="col-md-10">
+                        <select name="WorkShop" class="form-control">
+                            <option value="null">Nie jestem zainteresowany/a warsztatami</option>
+                            @foreach (var item in ViewBag.Workshops)
+                            {
+                                <option value="@item.ID">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Potwierdz" class="btn btn-default" />
+                    </div>
                 </div>
             </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Potwierdz" class="btn btn-default" />
-            </div>
-        </div>
+        </form>
     </div>
-</form>
+</div>

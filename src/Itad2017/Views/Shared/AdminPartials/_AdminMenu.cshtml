@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Itad2017.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<div class="navbar">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+            </button>
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Strona główna</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a style="color: #bbb; background-color: transparent;">Witaj <strong>@UserManager.GetUserName(User)</strong> !</a>
+                    </li>
+                    <li>
+                        <a asp-action="Index" asp-controller="participants">Uczestnicy</a>
+                    </li>
+                    <li>
+                        <a asp-action="Index" asp-controller="Workshops">Warsztaty</a>
+                    </li>
+                    <li>
+                        <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+                            <button type="submit" class="btn btn-link" style="padding-top: 15px; padding-bottom: 15px; color: red;">Wyloguj się</button>
+                        </form>
+                    </li>
+                </ul>
+            }
+            else
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li></li>
+                </ul>
+            }
+        </div>
+    </div>
+</div>

@@ -24,6 +24,17 @@ namespace Itad2017.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(int? id)
         {
+            //var user = _context.Participant.Select(n => n).Where(n => n.ID == 2003).First();
+            //var detail2 = new Detail();
+            //detail2.IsConfirmed = false;
+            //detail2.IsPresent = false;
+            //detail2.Code = "AAA";
+            //detail2.RegisterTime = DateTime.Now;
+            //user.Details = detail2;
+
+            //_context.Add(detail2);
+            //_context.Update(user);
+
             if (id == null)
             {
                 return NotFound();
@@ -36,7 +47,7 @@ namespace Itad2017.Controllers
             }
 
             var detail = await _context.Detail.SingleOrDefaultAsync(m => m == participant.Details);
-            detail.IsPresent = true;
+            detail.IsConfirmed = true;
             _context.Update(participant.Details);
             ViewBag.Workshops = await _context.Workshop.ToListAsync();
             await _context.SaveChangesAsync();
@@ -64,10 +75,16 @@ namespace Itad2017.Controllers
                 }                    
 
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Succes");
+                return RedirectToAction("Success");
             }
 
             return Redirect("/RegistrationConfrim?id="+ ID);
+        }
+
+        [HttpGet]
+        public IActionResult Success()
+        {
+            return View();
         }
     }
 }

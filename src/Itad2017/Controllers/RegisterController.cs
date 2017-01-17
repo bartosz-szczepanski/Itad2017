@@ -37,7 +37,7 @@ namespace Itad2017.Controllers
                     _context.SaveNewParticipant(participant);
                     await _context.SaveChangesAsync();
                     //_emailSender.SendEmailAsync("do kogo", "temat", "wiadomosc");
-                    return RedirectToAction("Succes");
+                    return RedirectToAction("Success");
                 }
             }
             catch (ArgumentException exception)
@@ -49,7 +49,7 @@ namespace Itad2017.Controllers
         }
 
         [HttpGet]
-        public IActionResult Succes()
+        public IActionResult Success()
         {
             return View();
         }

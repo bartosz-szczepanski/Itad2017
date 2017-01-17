@@ -24,7 +24,7 @@ namespace Itad2017.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Participant.ToListAsync());
+            return View(await _context.Participant.Include(n => n.Details).ToListAsync());
         }
 
         [Authorize]
@@ -63,7 +63,7 @@ namespace Itad2017.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(participant);
+                _context.SaveNewParticipant(participant);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

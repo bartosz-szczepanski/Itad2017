@@ -13,6 +13,7 @@
 /// <reference path="js/jquery.min.js" />
 /// <reference path="js/jquery.signalr-2.2.0.js" />
 /// <reference path="js/jquery.validate.js" />
+/// <reference path="js/jquery.validate.unobtrusive.js" />
 /// <reference path="js/jquery.vegas.js" />
 /// <reference path="js/jquery-2.1.4.js" />
 /// <reference path="js/modernizr-2.8.3.js" />

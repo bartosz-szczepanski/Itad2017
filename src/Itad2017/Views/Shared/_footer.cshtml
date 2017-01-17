@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Itad2017.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<section id="footer">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 font-14">
+            &copy; reset.ath.bielsko.pl <br />
+            <a target="blank" href="@Url.Content("~/files/ITAD-polityka-prywatnosci.pdf")">Polityka Prywatności</a>&nbsp;&nbsp;&nbsp;Wszystkie prawa zastrzeżone.<br />
+            @if (!SignInManager.IsSignedIn(User))
+            {
+                <a asp-area="" asp-controller="Account" asp-action="Login">Administracja</a>
+            }
+            else
+            {
+                <a asp-area="" asp-controller="Participants" asp-action="Index">Administracja</a>
+            }
+        </div>
+    </div>
+</section>
